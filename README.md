@@ -7,7 +7,7 @@ Bu proje, iki HC-05 Bluetooth modülünü AT komutları kullanarak Master ve Sla
 ## Gereksinimler
 
 - 2 adet HC-05 Bluetooth modülü
-- Arduino UNO (veya uyumlu bir mikrodenetleyici)
+- Arduino UNO (veya uyumlu bir mikrodenetleyici) veya Pinoo
 - Breadboard ve bağlantı kabloları
 - LED ve direnç (Slave cihaz için)
 - Buton (Master cihaz için)
@@ -34,12 +34,12 @@ Bu proje, iki HC-05 Bluetooth modülünü AT komutları kullanarak Master ve Sla
 
 ### 2. Slave Cihazı Yapılandırma
 
-1. Arduino IDE'de **Serial Monitor**'ü başlatın. İletişim hızını `38400 baud` olarak ayarlayın.
+1. Arduino IDE'de **Serial Monitor**'ü başlatın. İletişim hızını `9600 baud` olarak ayarlayın.
 2. Aşağıdaki AT komutlarını sırayla göndererek yanıtları doğrulayın:
    - **Test Komutu**: `AT`
      - Yanıt: `OK`
    - **Baud Hızını Kontrol**: `AT+UART?`
-     - Yanıt: `+UART:38400,0,0`
+     - Yanıt: `+UART:9600,0,0`
    - **Rol Kontrolü**: `AT+ROLE?`
      - Yanıt: `+ROLE=0` (Slave modunda olduğunu gösterir)
    - **Adres Bilgisi**: `AT+ADDR?`
@@ -51,7 +51,7 @@ Bu proje, iki HC-05 Bluetooth modülünü AT komutları kullanarak Master ve Sla
 
 1. Master cihaz için aynı şekilde AT moduna geçin ve aşağıdaki komutları kullanarak yapılandırmayı tamamlayın:
    - **Baud Hızını Kontrol**: `AT+UART?`
-     - Yanıt: `+UART:38400,0,0`
+     - Yanıt: `+UART:9600,0,0`
    - **Rol Ayarı**: `AT+ROLE=1`
      - Yanıt: `OK`
    - **Bağlantı Modu**: `AT+CMODE=0`
