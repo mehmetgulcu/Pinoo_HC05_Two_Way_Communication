@@ -1,5 +1,5 @@
 const int buttonPin = 2;  // Buton bağlantı pini
-bool buttonState;
+bool lastButtonState = LOW; // Önceki buton durumu
 
 void setup() {
   pinMode(buttonPin, INPUT);  // Buton giriş olarak ayarlandı
@@ -10,10 +10,14 @@ void setup() {
 void loop() {
   bool buttonState = digitalRead(buttonPin);  // Butona basılma durumu
 
-  if (buttonState == HIGH) {
-    Serial.println("1");  // Butona basıldığında "1" gönder
-  } else {
-    Serial.println("0");  // Buton bırakıldığında "0" gönder
+  if (buttonState != lastButtonState) { // Buton durumu değiştiyse
+    if (buttonState == HIGH) {
+      Serial.println("1");  // Butona basıldığında "1" gönder
+    } else {
+      Serial.println("0");  // Buton bırakıldığında "0" gönder
+    }
+    lastButtonState = buttonState; // Önceki durumu güncelle
   }
-  delay(50);  // Debouncing
+
+  // delay(10); // Gerekli olmadıkça kaldırabilirsiniz
 }
